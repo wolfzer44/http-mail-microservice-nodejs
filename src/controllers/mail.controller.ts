@@ -6,13 +6,17 @@ interface MailTypes extends Request {
 }
 
 export const sendMail = async (req: MailTypes, res: Response) : Promise<Response> => {
-  const { body: mail } = req
+  try {
+    const { body: mail } = req
 
-  if (!mail.from || !mail.to || !mail.subject || !mail.text) return res.status(400).json({ message: 'Missing parameters' })
+    if (!mail.from || !mail.to || !mail.subject || !mail.text) return res.status(400).json({ message: 'Missing parameters' })
 
-  const response = await mailgun.send(mail)
+    const response = await mailgun.send(mail)
 
-  if (!response) return res.status(400).json({ message: 'Something went wrong' })
+    if (!response) return res.status(400).json({ message: 'Something went wrong' })
 
-  return res.status(200).json(response)
+    return res.status(200).json(response)
+  } catch (err) {
+    res.status(400).json(err)
+  }
 }
