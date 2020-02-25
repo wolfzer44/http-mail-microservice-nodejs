@@ -8,6 +8,9 @@
     "start": "node dist/server.js",
     "prod": "parcel --target=node src/server.ts --no-source-maps;"
   },
+  "engines": {
+    "node": "10.16.3"
+  },
   "devDependencies": {
     "@types/express": "^4.17.2",
     "@types/mailgun-js": "^0.22.4",
