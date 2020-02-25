@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon ./src/server.ts",
-    "start": "node ./dist/server.js",
-    "build": "parcel --target=node src/server.ts --no-source-maps;"
+    "start": "node dist/server.js",
+    "prod": "parcel --target=node src/server.ts --no-source-maps;"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
